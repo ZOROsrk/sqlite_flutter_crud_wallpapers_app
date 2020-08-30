@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:wallpapers_app_sqllite/database/accessDatabase.dart';
 import 'package:wallpapers_app_sqllite/models/wallpaperModel.dart';
 import 'package:wallpapers_app_sqllite/screens/addWallpaperPage.dart';
-import 'package:wallpapers_app_sqllite/screens/favListPage.dart';
 import 'package:wallpapers_app_sqllite/widgets/wallpaperCard.dart';
 import 'package:sqflite/sqlite_api.dart';
 
-class HomePage extends StatefulWidget {
+class FavListPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _FavListPageState createState() => _FavListPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _FavListPageState extends State<FavListPage> {
   List<WallpaperModel> wallpapersList;
   @override
   void initState() {
@@ -24,15 +23,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Wallpapers"),
-        actions: [
-          IconButton(
-              icon: Icon(Icons.library_books),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => FavListPage()));
-              })
-        ],
+        title: Text("Favorites"),
+        actions: [],
       ),
       body: Stack(
         children: [
@@ -49,21 +41,6 @@ class _HomePageState extends State<HomePage> {
               : Center(
                   child: CircularProgressIndicator(),
                 ),
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Align(
-                alignment: Alignment.bottomRight,
-                child: FloatingActionButton(
-                    child: Icon(Icons.add),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AddWallpaperPage(
-                                    callBack: getDataList,
-                                  )));
-                    })),
-          )
         ],
       ),
     );
@@ -71,11 +48,11 @@ class _HomePageState extends State<HomePage> {
 
   void getDataList() async {
     Database database = await AccessDatabase.accessDatabase.getDatabase;
-    List<Map<String, dynamic>> result = await database.query('Wallpapers');
+    List<Map<String, dynamic>> result =
+        await database.query('Wallpapers', where: "fav=1");
     print(result.toString());
     List<WallpaperModel> list = List.generate(
         result.length, (index) => WallpaperModel.fromJson(result[index]));
-
     setState(() {
       wallpapersList = list;
     });

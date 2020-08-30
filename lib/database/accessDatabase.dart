@@ -19,12 +19,13 @@ class AccessDatabase {
   Future<Database> initDB() async {
     String dbPath = await getDatabasesPath();
     String path = join(dbPath, 'wallpapers_db');
-    Database database = await openDatabase(path, version: 1,
+    Database database = await openDatabase(path, version: 2,
         onCreate: (Database db, int Version) {
       db.execute(
-          "CREATE TABLE Wallpapers (id INTEGER PRIMARY KEY AUTOINCREMENT,url TEXT,title TEXT,category TEXT,desc TEXT)");
+          "CREATE TABLE Wallpapers (id INTEGER PRIMARY KEY AUTOINCREMENT,url TEXT,title TEXT,category TEXT,desc TEXT,fav INTEGER)");
     });
     return database;
   }
 }
+
 

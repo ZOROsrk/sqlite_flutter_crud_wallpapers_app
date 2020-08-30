@@ -119,7 +119,8 @@ class _AddWallpaperPageState extends State<AddWallpaperPage> {
                               "url": _url.text,
                               "title": _title.text,
                               "category": _category.text,
-                              "desc": _desc.text
+                              "desc": _desc.text,
+                              "fav": 0
                             });
                             print("wallpaper added");
                             setState(() {
