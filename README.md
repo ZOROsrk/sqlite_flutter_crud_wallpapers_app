@@ -3,6 +3,9 @@ simple flutter app to demonstrate the integration and CRUD operation with sqllit
 
 ## check out my video documentation of this app here
 
+## screenshots  
+![](screenshots/add_new_wallpaper.png)
+![](screenshots/wallpaper_list.png)
 
 ## Getting Started with flutter
 
