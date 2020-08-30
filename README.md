@@ -1,11 +1,16 @@
 # sqllite_flutter_crud_wallpapers_app
+
 simple flutter app to demonstrate the integration and CRUD operation with sqllite and flutter . By using the singleton design pattern.
 
 ## check out my video documentation of this app here
 
-## screenshots  
+## screenshots
+
 ![](screenshots/add_new_wallpaper.png)
 ![](screenshots/wallpaper_list.png)
+![](screenshots/favorites_list.png)
+![](screenshots/wallpaper_main_page.png)
+
 
 ## Getting Started with flutter
 
