@@ -3,6 +3,8 @@
 simple flutter app to demonstrate the integration and CRUD operation with sqllite and flutter . By using the singleton design pattern.
 
 ## check out my video documentation of this app here
+- [Part 1](https://www.youtube.com/watch?v=RgB8uZVUiD8)
+- [Part 2](https://www.youtube.com/watch?v=7xi45kAyQms)
 
 ## screenshots
 
